@@ -1,0 +1,193 @@
+@mixin bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 240px;
+
+    box-shadow: none;
+    background: none;
+}
+
+@mixin btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+
+    background: #FFFFFF;
+    border: 1px solid #E2E3E5;
+    border-radius: 6px;
+}
+
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 240px;
+    height: 448px;
+    gap: 12px;
+
+    border: 2px dashed #C4C4C4;
+    border-radius: 6px;
+
+    .frame {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 126px;
+        height: 84px;
+        
+        svg {
+            width: 20px;
+            height: 20px;
+            margin-bottom: 12px;
+        }
+
+        .firstText {
+            height: 17px;
+            line-height: 17px;
+            text-align: center;
+            color: #5D5FEF;
+            margin-bottom: 4px;
+        }
+
+        .secondText {
+            width: 106px;
+            height: 30px;
+
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 15px;
+            text-align: center;
+            color: #6B7280;
+        }
+    }
+
+
+    .calculatorDisplayBar {
+        @include bar;
+        height: 60px;
+
+        .display {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 11px 8px 5px 8px;
+            width: 232px;
+            height: 52px;
+            color: #111827;
+
+            font-weight: 800;
+            font-size: 36px;
+
+            background: #F3F4F6;
+            border-radius: 6px;
+        }
+    }
+
+    .calculatorOperatorsBar {
+        @include bar;
+        height: 56px;
+
+        .operators {
+            width: 232px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            div {
+                @include btn;
+                width: 52px;
+            }
+        }
+    }
+
+    .calculatorNumbersBar {
+        @include bar;
+        height: 224px;
+
+        .numbers {
+            width: 232px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+
+            div {
+                @include btn;
+                width: 72px;
+            }
+            #zero {
+                width: 152px;
+            }
+        }
+    }
+
+    .calculatorEqualsBar {
+        @include bar;
+        height: 72px;
+
+        .equals {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 232px;
+            height: 64px;
+
+            text-align: center;
+            color: #FFFFFF;
+
+            background: #5D5FEF;
+            border-radius: 6px;
+
+            .equalsDescription {
+                display: none;
+            }
+        }
+    }
+
+}
+
+
+.activeBoard {
+    background: #F0F9FF;
+}
+
+.clearBoard {
+    border: none;
+    justify-content: flex-start;
+
+    .frame {
+        display: none !important;
+    }
+}
+
+.calculator .hoverLine {
+    border-bottom: 1px solid #5D5FEF;
+}
+
+.hoverButton {
+    .calculatorOperatorsBar .operators div, .calculatorNumbersBar .numbers div {
+        &:hover {
+            border: 2px solid #5D5FEF;
+            cursor: pointer;
+        }
+    }
+    .calculatorEqualsBar .equals {
+        &:hover {
+            background: #5D3FFF;
+            cursor: pointer;
+
+            .equalsDescription {
+                display: flex;
+            }
+        }
+    }
+}
